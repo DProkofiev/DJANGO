@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+  {{book.name}}
+{% endblock %}
+
+{% block content %}
+
+  <!-- Post Content -->
+
+    <h1 class="post-preview">
+        {{book.name}}
+    </h1>
+    <p> {{book.authors}} </p>
+    <p> {{book.language}} </p>
+    <p> {{book.category}} </p>
+    </p> {{book.link}} </p>
+
+{% endblock %}
