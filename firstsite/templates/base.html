@@ -41,10 +41,10 @@
             <a class="nav-link" href="{% url 'firstsite:index' %}">Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'firstsite:create' %}">Поделиться книгой</a>
+            <a class="nav-link" href="{% url 'firstsite:create_link' %}">Поделиться книгой</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">О сайте</a>
+            <a class="nav-link" href="{% url 'firstsite:db_link' %}">Управление DB</a>
           </li>
         </ul>
       </div>

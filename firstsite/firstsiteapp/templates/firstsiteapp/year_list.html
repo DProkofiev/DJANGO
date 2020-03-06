@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+{% block title %}
+    изменить элемент
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+    <h1>Года издания</h1>
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for item in years %}
+          <div>
+            <b>  {{ item.name }} </b>
+                <a href="{% url 'firstsite:year_edit' pk=item.pk %}">
+                     &nbsp&nbsp&nbsp изменить &nbsp
+                </a>
+                <a href="{% url 'firstsite:year_delete' pk=item.pk %}">
+                     &nbsp&nbsp&nbsp удалить &nbsp
+                </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+
+{% endblock %}
