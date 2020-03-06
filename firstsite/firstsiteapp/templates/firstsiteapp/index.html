@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for item in books %}
+          <div class="post-preview">
+            <a href="{% url 'firstsite:book' id=item.id %}">
+              <h1 class="post-title">
+                {{ item.name }}
+              </h1>
+              <h2 class="post-subtitle">
+                {{ item.category }}
+              </h2>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#">User</a>
+              {{item.create}}</p>
+          </div>
+        {% endfor %}
+        <hr>
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">Next &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for item in book_list %}
+          <div class="post-preview">
+            <a href="{% url 'firstsite:book' id=item.id %}">
+              <h1 class="post-title">
+                {{ item.name }}
+              </h1>
+              <h2 class="post-subtitle">
+                {{ item.authors }}
+              </h2>
+              <h3 class="post-subtitle">
+                {{ item.category }}
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#">User</a>
+              {{item.create}}</p>
+          </div>
+        {% endfor %}
+        <hr>
+        <!-- Pager -->
+      </div>
+    </div>
+{% block pagination %}
+  {% if is_paginated %}
+
+      <div class="clearfix">
+          <span class="btn btn-primary float-right">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="page-current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+{% endblock %}
+{% endblock %}
