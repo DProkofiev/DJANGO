@@ -20,6 +20,9 @@ class Year(models.Model):
     name = models.CharField(max_length=4, unique=True)
    # description = models.CharField(max_length=4, unique=True)
 
+    class Meta:
+        ordering = ('-name',)
+
     def __str__(self):
         return self.name
 
@@ -44,3 +47,6 @@ class Book(models.Model):
 
     def __str__(self):
         return self.name
+
+class CoreObject(models.Model):
+    name = models.CharField(max_length=32)
