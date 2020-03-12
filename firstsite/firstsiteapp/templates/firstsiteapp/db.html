@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+    Управление базой данных
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+    <h1>Управление базой данных</h1>
+      <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+            <p>
+                <a class="nav-link" href="{% url 'firstsite:cat_list' %}">Категории</a>
+            </p>
+            <p>
+                <a class="nav-link" href="{% url 'firstsite:year_list' %}">Год издания</a>
+            </p>
+          </div>
+      </div>
+    </div>
+{% endblock %}
