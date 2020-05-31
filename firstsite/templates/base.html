@@ -46,6 +46,20 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'firstsite:db_link' %}">Управление DB</a>
           </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:logout' %}">{{user.username}}  Выход</a>
+          </li>
+          {% else %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:login' %}">Вход</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:register' %}">Регистрация</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>

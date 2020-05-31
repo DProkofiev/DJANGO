@@ -1,3 +1,6 @@
+
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models import Book, Category, Year
 from django.urls import reverse, reverse_lazy
@@ -10,25 +13,27 @@ def main_view(request):
     books = Book.objects.all()[:15]
     return render(request, 'firstsiteapp/index.html', context={'books': books})
 
+
+
 def create_book(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
+        form = BookForm()
+        return render(request, 'firstsiteapp/create.html', context={'form': form})
+    else:
         form = BookForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             link = form.cleaned_data['link']
             return HttpResponseRedirect(reverse('firstsite:index'))
         else:
-            return render(request, 'firstsiteapp/create.html', context={'form': form})
-    else:
-        form = BookForm()
-        return render(request, 'firstsiteapp/create.html', context={'form': form})
+             return render(request, 'firstsiteapp/create.html', context={'form': form})
 
 
 def book(request, id):
     book = get_object_or_404(Book, id=id)
     return render(request, 'firstsiteapp/book.html', context={'book': book})
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def db(request):
     return render(request, 'firstsiteapp/db.html')
 
